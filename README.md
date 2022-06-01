@@ -1,6 +1,11 @@
 ## CR1_SFE_FA_RW
 
-# Exercice Distance
+# Exercice 1 Addition
+```c
+//A faire en rajoutant les bonnes préconditions
+```
+
+# Exercice 2 Distance
 
 
 ```c
@@ -17,6 +22,4 @@ int distance(int a, int b){
 ```
 On a choisi d'abord de mettre des préconditions pour vérifier que nos paramètres sont des les limites des entiers.
 Puis on vérifie la sortie en fonction des conditions sur a, b et /result.
-```c
 
-```

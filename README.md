@@ -23,3 +23,27 @@ int distance(int a, int b){
 On a choisi d'abord de mettre des préconditions pour vérifier que nos paramètres sont des les limites des entiers.
 Puis on vérifie la sortie en fonction des conditions sur a, b et /result.
 
+# Exercice 3 Alphabet
+
+
+```c
+#include <limits.h>
+/*@
+requires (0 <= c <= 127 );
+ensures (( 'a' <=c <='z') || ('A' <= c <= 'Z')) && \result == 1;
+*/
+int alphabet_letter(char c){
+    if( ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z') ) return 1 ;
+    else return 0 ;
+}
+
+int main(){ int r ;
+    r = alphabet_letter('x') ;
+    //@ assert r ;
+    r = alphabet_letter('H') ;
+    //@ assert r ;
+    r = alphabet_letter(' ') ;
+    //@ assert !r ;
+}
+```
+

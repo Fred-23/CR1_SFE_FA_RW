@@ -48,3 +48,9 @@ int main(){ int r ;
 }
 ```
 
+# Exercice 4 Jours du Mois
+
+
+```c
+à faire
+```

@@ -52,7 +52,8 @@ int main(){ int r ;
 
 Pour moi le code est très proche de la solution mais je ne comprends pas la réponse de frama c
 ```c
-equires ( 1<=month <= 12 );
+/*@
+requires ( 1<=month <= 12 );
 
 ensures (( month == 4 || month == 6 || month == 9 || month == 11 ==> \result == 30));
 

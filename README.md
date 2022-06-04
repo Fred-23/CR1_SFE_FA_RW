@@ -2,7 +2,7 @@
 ![IMG_0978](https://user-images.githubusercontent.com/101244166/171950332-e927d53f-aeeb-41bd-99cd-c974be30a3c0.PNG)
 
 
-### Analyser et commeneter les résultats d'analyses
+### Analyser et commenter les résultats d'analyses
 
 # Exercice 1 Addition
 ```c

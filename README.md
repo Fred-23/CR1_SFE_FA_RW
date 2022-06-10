@@ -29,7 +29,7 @@ int add(int x, int y){
 
 *Commentaire :*
 
-La précondition permet de vérifier que la sommes des deux entiers soit comprises dans les limites du type entier. En effet, lorsque l'on fait l'addition de deux entiers 32 bits. Il est possible que la somme dépasse les 32 bits puisqu'elle est comprise dans 64 bits. Cette précondition nous petmet donc d'éviter le débordement. Puis, nous rajoutant la post condition pour réaliser le test d'inclusion dans la limite entière du résultat.
+La précondition permet de vérifier que la sommes des deux entiers soit comprises dans les limites du type entier. En effet, lorsque l'on fait l'addition de deux entiers 32 bits. Il est possible que la somme dépasse les 32 bits puisqu'elle est comprise dans 64 bits. La précondition nous permet d'éviter le débordement. Puis, nous rajoutant la post condition pour réaliser le test d'inclusion dans la limite entière du résultat.
 
 **Voici le code du résultat d'analyse :**
 ```c
@@ -150,11 +150,10 @@ int main(void)
 ```
 
 **Analyse et commentaire :**
-#Table de vérité implication:
-On a rajouter la  pré-condtion pour s'assurer que la variable est comprise dans l'ensemble des codes ASCII des lettres au nombres.
+# Table de vérité implication:
+On a rajouter la  pré-condtion pour s'assurer que la variable `c` est comprise dans l'ensemble des codes ASCII des lettres au nombres.
 
-Puis, nous testons notre  condition *if* avec nos post-conditions qui vérifie que nous le résultat est un *1* si on a une lettre de l'alphabet. Le résultat d'analyse nous affirme que notre  test fonctionnelle via les pastilles vertes et les asserts. En effet, le programme s'arrête quand le résultat avec un espace est faux via l'assert.
-
+Puis, nous testons notre  condition *if* avec nos post-conditions qui vérifie que nous le résultat est un *1* si on a une lettre de l'alphabet. Le résultat d'analyse nous affirme que notre test est fonctionnelle via les pastilles vertes et les asserts. En effet, le programme s'arrête quand le résultat est faux  à cause de l'espace via l'assert.
 
 
 # Exercice 4 : Jours du Mois (Voir ma VM)
@@ -206,6 +205,8 @@ int day_of(int month)
 
 
 
+
+
 # Exercice 5 Triangle
 
 #### commenter
@@ -244,5 +245,8 @@ int last_angle(int first, int second)
 
 ```
 **Analyse et commentaire :**
+
+La fonction reçoit deux angles d'un triangle et renvoie le dernier.
+On va donc tout d'abord indiquer que chacun des angles est compris entre 0  et 180° via notre programme. Puis, via la post-condition on vérifie que la fonction `last_angle` renvoie bien un angle entre 0 et 180° pour respecter la somme d'un triangle.
 
 ## Conclusion

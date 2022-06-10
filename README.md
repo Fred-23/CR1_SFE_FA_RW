@@ -5,11 +5,13 @@
 **Encadrants :** Sébastian FAUCOU et Pierre-Emmanuel HLADIK
 ![IMG_0978](https://user-images.githubusercontent.com/101244166/171950332-e927d53f-aeeb-41bd-99cd-c974be30a3c0.PNG)
 ## Notes
-Highlight un mot `exemple` et gras **limits.h**
+Highlight un mot `exemple` et gras **limits.h** et italique *exemple*
+
+Dire que l'on des pastilles vertes partout sauf
 ## Introduction :
 
-Au fil des années, on a vu qu'il y a de plus en plus d'incidents dans les systèmes critiques dues à des erreurs facilement évitables avec des outils et des logiciels adéquats. Il n'est donc pas sans raison qu'on a vu l'apparition d'outils comme frama-c ou metrics pour éviter au maximum les erreurs via le respect de règles et les normes. Parmi, les célèbres accidents on peut citer celui d'Ariane 5 dû à une mauvaise conversion d'un entier 16 bits à 8 bits entrîantn une défaillance non prise en compte.
-### Analyser et commenter les résultats d'analyses
+Au fil des années, on a vu qu'il y a de plus en plus d'incidents dans les systèmes critiques dues à des erreurs facilement évitables avec des outils et des logiciels adéquats. Il n'est donc pas sans raison qu'on a vu l'apparition d'outils comme `frama-c` ou `metrics` pour éviter au maximum les erreurs via le respect de règles et les normes. Parmi, les célèbres accidents on peut citer celui d'Ariane 5 dû à une mauvaise conversion d'un entier 16 bits à 8 bits entraînant une défaillance non prise en compte. Ce TP nous permet ainsi de mieux connaître ses outils et savoir programmer du code des systèmes critiques en adoptant la bonne conduite.
+
 
 # Exercice 1 Addition
 
@@ -26,6 +28,10 @@ int add(int x, int y){
 }
 ```
 
+*Commentaire : *
+
+La précondition permet de vérifier que la sommes des deux entiers soit comprises dans les limites du type entier. En effet, lorsque l'on fait l'addition de deux entiers 32 bits. Il est possible que la somme dépasse les 32 bits puisqu'elle est comprise dans 64 bits. Cette précondition nous petmet donc d'éviter le débordement. Puis, nous rajoutant la post condition pour réaliser le test d'inclusion dans la limite entière du résultat.
+
 **Voici le code du résultat d'analyse :**
 ```c
 /*@ requires -2147483647 - 1 ≤ x + y ≤ 2147483647;
@@ -40,7 +46,11 @@ int add(int x, int y)
   return __retres;
 }
 ```
-**Analyse et commentaire :**
+**Analyse :**
+
+On peut voir que toutes les pastilles sont vertes que les tests sont bien implémentés, de plus on peut le voir dans les asserts qui reprennet les conditions énoncées plutôt.
+
+
 
 
 # Exercice 2 Distance

@@ -105,7 +105,7 @@ int distance(int a, int b)
 ```
 **Analyse et commentaire :**
 
-On utilise deux précondtions pour s'assurer que la soustraction de a-b et b-a soit compris dans les limites du type entier de 32 bits, pour aussi éviter les débordements. Puis, pour tester notre fontion on vérifie que notre que les résultat (/result) dépend des bonnes conditions sur a et b. De la même manière que sur l'exercice  frama-c nos prévient du débordement via les asserts.
+On utilise deux précondtions pour s'assurer que la soustraction de a-b et b-a soit compris dans les limites du type entier de 32 bits, pour aussi éviter les débordements. Puis, pour tester notre fontion on vérifie que notre que les résultat (/result) dépend des bonnes conditions sur a et b. De la même manière que sur l'exercice  frama-c nous prévient du débordement via les asserts.
 
 
 # Exercice 3 Alphabet
@@ -203,8 +203,10 @@ int day_of(int month)
 
 **Analyse et commentaire :**
 
+On utilise d'abord la pré-condition pour s'assurer que notre variable d'entrée est comprise dans la plage entre 1 et 12 soit la plage des mois.
+Puis, on utilise des post-conditions pour tester que la fonction day_of, renvoie le bon résultat en fonction du nombre de fois. On a choisi au début de regrouper le code via des signes  `ou (||)`, mais nous avons remarquer que toutes nos pastilles n'étaient pas vertes.
 
-
+On a donc ensuite décomposer les pré-conditions mois par mois et tout s'est bien déroulé. L'explication est que frama-c a des difficultés avec des multiples conditions.
 
 
 # Exercice 5 Triangle

@@ -17,9 +17,23 @@ int add(int x, int y){
 }
 ```
 
+**Voici le code du résultat d'analyse :**
+```c
+/*@ requires -2147483647 - 1 ≤ x + y ≤ 2147483647;
+    ensures -2147483647 - 1 ≤ \result ≤ 2147483647;
+ */
+int add(int x, int y)
+{
+  int __retres;
+  /*@ assert rte: signed_overflow: -2147483648 ≤ x + y; */
+  /*@ assert rte: signed_overflow: x + y ≤ 2147483647; */
+  __retres = x + y;
+  return __retres;
+}
+```
+
+
 #### Commenter
-
-
 # Exercice 2 Distance
 
 
@@ -35,6 +49,38 @@ int distance(int a, int b){
     else return a - b ;
 }
 ```
+
+**Voici le code du résultat d'analyse :**
+```c
+/*@ requires
+      -2147483647 - 1 ≤ b - a ≤ 2147483647 ∧
+      -2147483647 - 1 ≤ a - b ≤ 2147483647;
+    ensures \old(a) < \old(b) ⇒ \result ≡ \old(b) - \old(a);
+    ensures \old(a) ≥ \old(b) ⇒ \result ≡ \old(a) - \old(b);
+ */
+int distance(int a, int b)
+{
+  int __retres;
+  if (a < b) {
+    {
+      /*@ assert rte: signed_overflow: -2147483648 ≤ b - a; */
+      /*@ assert rte: signed_overflow: b - a ≤ 2147483647; */
+      __retres = b - a;
+      goto return_label;
+    }
+  }
+  else {
+    {
+      /*@ assert rte: signed_overflow: -2147483648 ≤ a - b; */
+      /*@ assert rte: signed_overflow: a - b ≤ 2147483647; */
+      __retres = a - b;
+      goto return_label;
+    }
+  }
+  return_label: return __retres;
+}
+```
+
 On a choisi d'abord de mettre des préconditions pour vérifier que nos paramètres sont des les limites des entiers.
 Puis on vérifie la sortie en fonction des conditions sur a, b et /result.
 
@@ -62,9 +108,28 @@ int main(){ int r ;
 }
 ```
 
-# Exercice 4 Jours du Mois
 
-## Pour moi le code est très proche de la solution mais je ne comprends pas la réponse de frama c
+
+**Voici le code du résultat d'analyse :**
+```c
+int main(void)
+{
+  int __retres;
+  int r;
+  r = alphabet_letter((char)'x');
+  /*@ assert r ≢ 0; */ ;
+  r = alphabet_letter((char)'H');
+  /*@ assert r ≢ 0; */ ;
+  r = alphabet_letter((char)' ');
+  /*@ assert r ≡ 0; */ ;
+  __retres = 0;
+  return __retres;
+}
+```
+
+
+# Exercice 4 Jours du Mois
+## Pour moi le code est très proche de la solution mais je ne comprends pas la réponse de frama c. Même résultat entre mon Code et les autres
 ```c
 /*@
 requires ( 1<=month <= 12 );
@@ -84,6 +149,30 @@ int day_of(int month){
 ```
 
 
+**Voici le code du résultat d'analyse :**
+```c
+/*@ requires 1 ≤ month ≤ 12;
+    ensures
+      \old(month) ≡ 4 ∨ \old(month) ≡ 6 ∨ \old(month) ≡ 9 ∨
+      \old(month) ≡ 11 ⇒ \result ≡ 30;
+    ensures
+      \old(month) ≡ 1 ∨ \old(month) ≡ 3 ∨ \old(month) ≡ 5 ∨
+      \old(month) ≡ 7 ∨ \old(month) ≡ 8 ∨ \old(month) ≡ 10 ∨
+      \old(month) ≡ 12 ⇒ \result ≡ 31;
+    ensures \old(month) ≡ 2 ⇒ \result ≡ 28;
+ */
+int day_of(int month)
+{
+  int __retres;
+  int days[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+  /*@ assert rte: signed_overflow: -2147483648 ≤ month - 1; */
+  /*@ assert rte: index_bound: 0 ≤ (int)(month - 1); */
+  /*@ assert rte: index_bound: (int)(month - 1) < 12; */
+  __retres = days[month - 1];
+  return __retres;
+}
+```
+
 # Exercice 5 Triangle
 
 #### commenter
@@ -96,6 +185,26 @@ int day_of(int month){
 
 int last_angle(int first, int second){
     return 180 - first - second ;
+}
+
+```
+
+**Voici le code du résultat d'analyse :**
+```c
+/*@ requires 0 ≤ first ≤ 180 ∧ 0 ≤ second ≤ 180;
+    ensures (\result + \old(first)) + \old(second) ≡ 180;
+ */
+int last_angle(int first, int second)
+{
+  int __retres;
+  /*@ assert rte: signed_overflow: 180 - first ≤ 2147483647; */
+  /*@ assert
+      rte: signed_overflow: -2147483648 ≤ (int)(180 - first) - second;
+  */
+  /*@ assert rte: signed_overflow: (int)(180 - first) - second ≤ 2147483647;
+  */
+  __retres = (180 - first) - second;
+  return __retres;
 }
 
 ```

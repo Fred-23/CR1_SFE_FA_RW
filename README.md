@@ -5,11 +5,15 @@
 **Encadrants :** Sébastian FAUCOU et Pierre-Emmanuel HLADIK
 ![IMG_0978](https://user-images.githubusercontent.com/101244166/171950332-e927d53f-aeeb-41bd-99cd-c974be30a3c0.PNG)
 ## Notes
-Highlight un mot `exemple` et gras `limits.h`
+Highlight un mot `exemple` et gras **limits.h**
+## Introduction :
 
+Au fil des années, on a vu qu'il y a de plus en plus d'incidents dans les systèmes critiques dues à des erreurs facilement évitables avec des outils et des logiciels adéquats. Il n'est donc pas sans raison qu'on a vu l'apparition d'outils comme frama-c ou metrics pour éviter au maximum les erreurs via le respect de règles et les normes. Parmi, les célèbres accidents on peut citer celui d'Ariane 5 dû à une mauvaise conversion d'un entier 16 bits à 8 bits entrîantn une défaillance non prise en compte.
 ### Analyser et commenter les résultats d'analyses
 
 # Exercice 1 Addition
+
+**Code Implémenté :**
 ```c
 #include <limits.h>
 
@@ -36,12 +40,12 @@ int add(int x, int y)
   return __retres;
 }
 ```
+**Analyse et commentaire :**
 
 
-#### Commenter
 # Exercice 2 Distance
 
-
+**Code Implémenté :**
 ```c
 #include <limits.h>
 /*@
@@ -85,13 +89,14 @@ int distance(int a, int b)
   return_label: return __retres;
 }
 ```
+**Analyse et commentaire :**
 
 On a choisi d'abord de mettre des préconditions pour vérifier que nos paramètres sont des les limites des entiers.
 Puis on vérifie la sortie en fonction des conditions sur a, b et /result.
 
 # Exercice 3 Alphabet
 
-
+**Code Implémenté :**
 ```c
 #include <limits.h>
 /*@
@@ -132,9 +137,13 @@ int main(void)
 }
 ```
 
+**Analyse et commentaire :**
+...
 
 # Exercice 4 Jours du Mois
 ## Pour moi le code est très proche de la solution mais je ne comprends pas la réponse de frama c. Même résultat entre mon Code et les autres
+
+**Code Implémenté :**
 ```c
 /*@
 requires ( 1<=month <= 12 );
@@ -152,6 +161,8 @@ int day_of(int month){
 }
 
 ```
+
+
 
 
 **Voici le code du résultat d'analyse :**
@@ -178,9 +189,13 @@ int day_of(int month)
 }
 ```
 
+**Analyse et commentaire :**
+
 # Exercice 5 Triangle
 
 #### commenter
+
+**Code Implémenté :**
 ```c
 #include <limits.h>
 /*@
@@ -213,6 +228,6 @@ int last_angle(int first, int second)
 }
 
 ```
-
+**Analyse et commentaire :**
 
 ## Conclusion

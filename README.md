@@ -4,12 +4,12 @@
 
 **Encadrants :** Sébastian FAUCOU et Pierre-Emmanuel HLADIK
 
-## Notation Markdown
+## Notations Markdown
 Highlight un mot `exemple` , en gras **exemple** et italique *exemple*
 
 ## Introduction :
 
-Au fil des années, on a vu qu'il y a de plus en plus d'incidents dans les systèmes critiques dues à des erreurs facilement évitables avec des outils et des logiciels adéquats. Il n'est donc pas sans raison qu'on a vu l'apparition d'outils comme `frama-c` ou `metrics` pour éviter au maximum les erreurs via le respect de règles et les normes. Parmi, les célèbres accidents on peut citer celui d'Ariane 5 dû à une mauvaise conversion d'un entier 16 bits à 8 bits entraînant une défaillance non prise en compte. Ce TP nous permet ainsi de mieux connaître ses outils et savoir programmer du code des systèmes critiques en adoptant la bonne conduite.
+Au fil des années, il y a de plus en plus d'incidents dans les systèmes critiques dues à des erreurs logiciels.. Il n'est donc pas sans raison qu'on a vu l'apparition d'outils comme `frama-c` ou `metrics` pour éviter au maximum les erreurs, via le respect de règles et de normes. Parmi, les célèbres accidents on peut citer celui d'Ariane 5 dû à une mauvaise conversion d'un entier 16 bits à 8 bits entraînant une défaillance non prise en compte par le système. Ce TP nous permet ainsi de mieux connaître ses outils et savoir programmer du code destinées à des systèmes critiques via l'adoptant de bonnes pratiques de codage .
 
 
 # Exercice 1 Addition
@@ -105,7 +105,7 @@ int distance(int a, int b)
 ```
 **Analyse et commentaire :**
 
-On utilise deux pré-condtions pour s'assurer que la soustraction de a-b et b-a soit comprise dans les limites du type entier de 32 bits, pour  éviter les débordements. Puis, pour tester notre fontion on vérifie que notre que les résultat (/result) dépend des  conditions sur a et b. De la même manière que sur l'exercice  frama-c nous prévient du débordement via les asserts.
+On utilise deux pré-condtions pour s'assurer que la soustraction de **a-b** et **b-a** soit comprise dans les limites du type entier de 32 bits, pour  éviter les débordements. Puis, pour tester notre fontion on vérifie que les résultat (/result) dépendent des  conditions sur a et b. De la même manière que sur l'exercice 1,  frama-c nous prévient du débordement via les asserts.
 
 # Table de vérité Implication
 
@@ -176,7 +176,7 @@ Le résultat d'analyse nous montre que notre test est fonctionnelle via les past
 
 
 
-# Exercice 4 : Jours du Mois (Voir ma VM)
+# Exercice 4 : Jours du Mois
 
 **Code Implémenté :**
 ```c
@@ -224,9 +224,8 @@ int day_of(int month)
 **Analyse et commentaire :**
 
 On utilise d'abord la pré-condition pour s'assurer que notre variable d'entrée est comprise dans la plage entre 1 et 12 soit la plage des mois.
-Puis, on utilise des post-conditions pour tester que la fonction day_of, renvoie le bon résultat en fonction du nombre de fois. On a choisi au début de regrouper le code via des signes  `ou (||)`, mais nous avons remarquer que toutes nos pastilles n'étaient pas vertes.
-
-On a donc ensuite décomposer les pré-conditions mois par mois et tout s'est bien déroulé. L'explication est que frama-c a des difficultés avec des multiples conditions.
+Puis, on utilise des post-conditions pour tester que la fonction day_of, renvoie le bon résultat en fonction du nombre de fois.
+A l'aide de ses tests on peut vérifier que le mois est associé au bon nombre de jours.
 
 
 # Exercice 5 Triangle

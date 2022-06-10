@@ -3,9 +3,9 @@
 **Rédacteurs :** Frédéric ALPHONSE et Roman WOLFENSPERGER
 
 **Encadrants :** Sébastian FAUCOU et Pierre-Emmanuel HLADIK
-![IMG_0978](https://user-images.githubusercontent.com/101244166/171950332-e927d53f-aeeb-41bd-99cd-c974be30a3c0.PNG)
-## Notes
-Highlight un mot `exemple` et gras **limits.h** et italique *exemple*
+
+## Notation Markdown
+Highlight un mot `exemple` , en gras **exemple** et italique *exemple*
 
 ## Introduction :
 
@@ -29,7 +29,7 @@ int add(int x, int y){
 
 *Commentaire :*
 
-La précondition permet de vérifier que la sommes des deux entiers soit comprises dans les limites du type entier. En effet, lorsque l'on fait l'addition de deux entiers 32 bits. Il est possible que la somme dépasse les 32 bits puisqu'elle est comprise dans 64 bits. La précondition nous permet d'éviter le débordement. Puis, nous rajoutant la post condition pour réaliser le test d'inclusion dans la limite entière du résultat.
+La précondition permet de vérifier que la sommes des deux entiers soit comprises dans les limites du type entier. En effet, lorsque l'on fait l'addition de deux entiers 32 bits. Il est possible que la somme dépasse les 32 bits puisqu'elle est comprise dans 64 bits. La précondition nous permet ainsi d'éviter le débordement. Puis, nous rajoutons la post condition pour réaliser le test d'inclusion dans la limite entière du résultat.
 
 **Voici le code du résultat d'analyse :**
 ```c
@@ -47,7 +47,7 @@ int add(int x, int y)
 ```
 **Analyse :**
 
-On peut voir que toutes les pastilles sont vertes donc que les tests sont bien implémentés, de plus on peut voir que les asserts nous avertit du fameaux débordement des entiers.
+On peut voir que toutes les pastilles sont vertes donc que les tests sont bien implémentés. De plus, on peut voir que les asserts nous avertissent des débordement des entiers.
 
 # Explications sur les asserts
 
@@ -105,7 +105,16 @@ int distance(int a, int b)
 ```
 **Analyse et commentaire :**
 
-On utilise deux précondtions pour s'assurer que la soustraction de a-b et b-a soit compris dans les limites du type entier de 32 bits, pour aussi éviter les débordements. Puis, pour tester notre fontion on vérifie que notre que les résultat (/result) dépend des bonnes conditions sur a et b. De la même manière que sur l'exercice  frama-c nous prévient du débordement via les asserts.
+On utilise deux pré-condtions pour s'assurer que la soustraction de a-b et b-a soit comprise dans les limites du type entier de 32 bits, pour  éviter les débordements. Puis, pour tester notre fontion on vérifie que notre que les résultat (/result) dépend des  conditions sur a et b. De la même manière que sur l'exercice  frama-c nous prévient du débordement via les asserts.
+
+# Table de vérité Implication
+
+| A         | B         |    A => B |
+|-----------|-----------|-----------|
+|          1| 1         | 1         |
+|     1     |       0   | 0         |
+|     0     |     1     |   1       |
+|     0     |       0   |   1       |
 
 
 # Exercice 3 Alphabet
@@ -115,7 +124,7 @@ On utilise deux précondtions pour s'assurer que la soustraction de a-b et b-a s
 #include <limits.h>
 /*@
 requires (0 <= c <= 127 );
-ensures (( 'a' <=c <='z') || ('A' <= c <= 'Z')) && \result == 1;
+ensures (( 'a' <=c <='z') || ('A' <= c <= 'Z')) <==> \result;
 */
 int alphabet_letter(char c){
     if( ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z') ) return 1 ;
@@ -150,10 +159,21 @@ int main(void)
 ```
 
 **Analyse et commentaire :**
-# Table de vérité implication:
-On a rajouter la  pré-condtion pour s'assurer que la variable `c` est comprise dans l'ensemble des codes ASCII des lettres au nombres.
 
-Puis, nous testons notre  condition *if* avec nos post-conditions qui vérifie que nous le résultat est un *1* si on a une lettre de l'alphabet. Le résultat d'analyse nous affirme que notre test est fonctionnelle via les pastilles vertes et les asserts. En effet, le programme s'arrête quand le résultat est faux  à cause de l'espace via l'assert.
+On a rajouté la  pré-condtion pour s'assurer que la variable `c` est comprise dans l'ensemble des codes ASCII en partant des nombres aux lettres.
+
+Puis, nous testons notre  condition *if* avec des post-conditions vérifiant  que le résultat est soit *1* ou *0* via une implication.
+Le résultat d'analyse nous montre que notre test est fonctionnelle via les pastilles vertes et les asserts. En effet, le programme s'arrête quand le résultat est faux à cause de l'espace via l'assert.
+
+# Table de vérité équivalence
+
+| A         | B         |    A => B |
+|-----------|-----------|-----------|
+|          0| 0         | 1         |
+|     0     |       1   | 0         |
+|     1     |        0  |   0       |
+|     1     |       1   |   1       |
+
 
 
 # Exercice 4 : Jours du Mois (Voir ma VM)
@@ -211,8 +231,6 @@ On a donc ensuite décomposer les pré-conditions mois par mois et tout s'est bi
 
 # Exercice 5 Triangle
 
-#### commenter
-
 **Code Implémenté :**
 ```c
 #include <limits.h>
@@ -252,3 +270,6 @@ La fonction reçoit deux angles d'un triangle et renvoie le dernier.
 On va donc tout d'abord indiquer que chacun des angles est compris entre 0  et 180° via notre programme. Puis, via la post-condition on vérifie que la fonction `last_angle` renvoie bien un angle entre 0 et 180° pour respecter la somme d'un triangle.
 
 ## Conclusion
+
+Pour conclure, ce TP nous a permis de découvrir et de prendre en main de nouveaux outils pour s’assurer de la sûreté de fonctionnement logiciel.
+Nous avons pu implémenter différents tests sur plusieurs fonctions. Cela nous a permis de comprendre les sources d’insécurité dans un code ou les problèmes d’optimisation.

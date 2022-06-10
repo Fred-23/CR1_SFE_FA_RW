@@ -7,7 +7,6 @@
 ## Notes
 Highlight un mot `exemple` et gras **limits.h** et italique *exemple*
 
-Dire que l'on des pastilles vertes partout sauf
 ## Introduction :
 
 Au fil des années, on a vu qu'il y a de plus en plus d'incidents dans les systèmes critiques dues à des erreurs facilement évitables avec des outils et des logiciels adéquats. Il n'est donc pas sans raison qu'on a vu l'apparition d'outils comme `frama-c` ou `metrics` pour éviter au maximum les erreurs via le respect de règles et les normes. Parmi, les célèbres accidents on peut citer celui d'Ariane 5 dû à une mauvaise conversion d'un entier 16 bits à 8 bits entraînant une défaillance non prise en compte. Ce TP nous permet ainsi de mieux connaître ses outils et savoir programmer du code des systèmes critiques en adoptant la bonne conduite.
@@ -49,6 +48,11 @@ int add(int x, int y)
 **Analyse :**
 
 On peut voir que toutes les pastilles sont vertes donc que les tests sont bien implémentés, de plus on peut voir que les asserts nous avertit du fameaux débordement des entiers.
+
+# Explications sur les asserts
+
+L'assert est un outil essentiel dans les systèmes critique. Il permet de d'arrêter si le programme est **false** ou de le continuer si le résultat est **true**.
+
 
 
 
@@ -146,10 +150,14 @@ int main(void)
 ```
 
 **Analyse et commentaire :**
+#Table de vérité implication:
+On a rajouter la  pré-condtion pour s'assurer que la variable est comprise dans l'ensemble des codes ASCII des lettres au nombres.
+
+Puis, nous testons notre  condition *if* avec nos post-conditions qui vérifie que nous le résultat est un *1* si on a une lettre de l'alphabet. Le résultat d'analyse nous affirme que notre  test fonctionnelle via les pastilles vertes et les asserts. En effet, le programme s'arrête quand le résultat avec un espace est faux via l'assert.
 
 
-# Exercice 4 : Jours du Mois
-## Pour moi le code est très proche de la solution mais je ne comprends pas la réponse de frama c. Même résultat entre mon Code et les autres
+
+# Exercice 4 : Jours du Mois (Voir ma VM)
 
 **Code Implémenté :**
 ```c
@@ -169,9 +177,6 @@ int day_of(int month){
 }
 
 ```
-
-
-
 
 **Voici le code du résultat d'analyse :**
 ```c
@@ -198,6 +203,8 @@ int day_of(int month)
 ```
 
 **Analyse et commentaire :**
+
+
 
 # Exercice 5 Triangle
 

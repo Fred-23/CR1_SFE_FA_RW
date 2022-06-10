@@ -1,4 +1,5 @@
 ## CR1_SFE_Frédéric ALPHONSE_Roman WOLFENSPERGER
+![Image1](https://user-images.githubusercontent.com/101244166/173104116-daf2b0cc-5900-46a4-9a58-f313c0c9afcd.png)
 
 **Rédacteurs :** Frédéric ALPHONSE et Roman WOLFENSPERGER
 
@@ -45,6 +46,8 @@ int add(int x, int y)
   return __retres;
 }
 ```
+![EX1](https://user-images.githubusercontent.com/101244166/173104153-73497e0f-f355-4496-96d5-64005582dae1.png)
+
 **Analyse :**
 
 On peut voir que toutes les pastilles sont vertes donc que les tests sont bien implémentés. De plus, on peut voir que les asserts nous avertissent des débordement des entiers.
@@ -103,6 +106,9 @@ int distance(int a, int b)
   return_label: return __retres;
 }
 ```
+![EX2](https://user-images.githubusercontent.com/101244166/173104216-3d8cd209-a282-4caf-8a10-0d597f138144.png)
+
+
 **Analyse et commentaire :**
 
 On utilise deux pré-condtions pour s'assurer que la soustraction de **a-b** et **b-a** soit comprise dans les limites du type entier de 32 bits, pour  éviter les débordements. Puis, pour tester notre fontion on vérifie que les résultat (/result) dépendent des  conditions sur a et b. De la même manière que sur l'exercice 1,  frama-c nous prévient du débordement via les asserts.
@@ -158,12 +164,17 @@ int main(void)
 }
 ```
 
+![EX3](https://user-images.githubusercontent.com/101244166/173104256-3d455f01-0d9a-48eb-a90c-10276dfb3401.png)
+
+
 **Analyse et commentaire :**
 
 On a rajouté la  pré-condtion pour s'assurer que la variable `c` est comprise dans l'ensemble des codes ASCII en partant des nombres aux lettres.
 
 Puis, nous testons notre  condition *if* avec des post-conditions vérifiant  que le résultat est soit *1* ou *0* via une implication.
 Le résultat d'analyse nous montre que notre test est fonctionnelle via les pastilles vertes et les asserts. En effet, le programme s'arrête quand le résultat est faux à cause de l'espace via l'assert.
+
+
 
 # Table de vérité équivalence
 
@@ -227,6 +238,9 @@ On utilise d'abord la pré-condition pour s'assurer que notre variable d'entrée
 Puis, on utilise des post-conditions pour tester que la fonction day_of, renvoie le bon résultat en fonction du nombre de fois.
 A l'aide de ses tests on peut vérifier que le mois est associé au bon nombre de jours.
 
+![EX4](https://user-images.githubusercontent.com/101244166/173104288-89417c33-248a-42d4-afa8-5e4ef4fe957a.png)
+
+
 
 # Exercice 5 Triangle
 
@@ -263,6 +277,10 @@ int last_angle(int first, int second)
 }
 
 ```
+
+![EX5](https://user-images.githubusercontent.com/101244166/173104330-209102c2-6c7a-427f-ac24-c96b7b401497.png)
+
+
 **Analyse et commentaire :**
 
 La fonction reçoit deux angles d'un triangle et renvoie le dernier.

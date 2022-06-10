@@ -28,7 +28,7 @@ int add(int x, int y){
 }
 ```
 
-*Commentaire : *
+*Commentaire :*
 
 La précondition permet de vérifier que la sommes des deux entiers soit comprises dans les limites du type entier. En effet, lorsque l'on fait l'addition de deux entiers 32 bits. Il est possible que la somme dépasse les 32 bits puisqu'elle est comprise dans 64 bits. Cette précondition nous petmet donc d'éviter le débordement. Puis, nous rajoutant la post condition pour réaliser le test d'inclusion dans la limite entière du résultat.
 
@@ -48,7 +48,7 @@ int add(int x, int y)
 ```
 **Analyse :**
 
-On peut voir que toutes les pastilles sont vertes que les tests sont bien implémentés, de plus on peut le voir dans les asserts qui reprennet les conditions énoncées plutôt.
+On peut voir que toutes les pastilles sont vertes donc que les tests sont bien implémentés, de plus on peut voir que les asserts nous avertit du fameaux débordement des entiers.
 
 
 
@@ -101,8 +101,8 @@ int distance(int a, int b)
 ```
 **Analyse et commentaire :**
 
-On a choisi d'abord de mettre des préconditions pour vérifier que nos paramètres sont des les limites des entiers.
-Puis on vérifie la sortie en fonction des conditions sur a, b et /result.
+On utilise deux précondtions pour s'assurer que la soustraction de a-b et b-a soit compris dans les limites du type entier de 32 bits, pour aussi éviter les débordements. Puis, pour tester notre fontion on vérifie que notre que les résultat (/result) dépend des bonnes conditions sur a et b. De la même manière que sur l'exercice  frama-c nos prévient du débordement via les asserts.
+
 
 # Exercice 3 Alphabet
 
@@ -128,8 +128,6 @@ int main(){ int r ;
 }
 ```
 
-
-
 **Voici le code du résultat d'analyse :**
 ```c
 int main(void)
@@ -148,9 +146,9 @@ int main(void)
 ```
 
 **Analyse et commentaire :**
-...
 
-# Exercice 4 Jours du Mois
+
+# Exercice 4 : Jours du Mois
 ## Pour moi le code est très proche de la solution mais je ne comprends pas la réponse de frama c. Même résultat entre mon Code et les autres
 
 **Code Implémenté :**

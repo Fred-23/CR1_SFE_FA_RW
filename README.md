@@ -1,7 +1,12 @@
 ## CR1_SFE_Frédéric ALPHONSE_Roman WOLFENSPERGER
+
+**Rédacteurs :** Frédéric ALPHONSE et Roman WOLFENSPERGER
+
+**Encadrants :** Sébastian FAUCOU et Pierre-Emmanuel HLADIK
 ![IMG_0978](https://user-images.githubusercontent.com/101244166/171950332-e927d53f-aeeb-41bd-99cd-c974be30a3c0.PNG)
 ## Notes
 Highlight un mot `exemple` et gras `limits.h`
+
 ### Analyser et commenter les résultats d'analyses
 
 # Exercice 1 Addition

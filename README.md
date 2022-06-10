@@ -1,13 +1,24 @@
 ## CR1_SFE_Frédéric ALPHONSE_Roman WOLFENSPERGER
 ![IMG_0978](https://user-images.githubusercontent.com/101244166/171950332-e927d53f-aeeb-41bd-99cd-c974be30a3c0.PNG)
-
-
+## Notes
+Highlight un mot `exemple` et italique **`limits.h`**
 ### Analyser et commenter les résultats d'analyses
 
 # Exercice 1 Addition
 ```c
-//A faire en rajoutant les bonnes préconditions
+#include <limits.h>
+
+/*@
+  requires INT_MIN <= x+y <= INT_MAX
+  ensures INT_MIN <= \result <= INT_MAX;
+*/
+int add(int x, int y){
+    return x+y ;
+}
 ```
+
+#### Commenter
+
 
 # Exercice 2 Distance
 
@@ -21,7 +32,7 @@
 */
 int distance(int a, int b){
     if(a < b) return b - a ;
-    else return a - b ; 
+    else return a - b ;
 }
 ```
 On a choisi d'abord de mettre des préconditions pour vérifier que nos paramètres sont des les limites des entiers.
@@ -53,7 +64,7 @@ int main(){ int r ;
 
 # Exercice 4 Jours du Mois
 
-Pour moi le code est très proche de la solution mais je ne comprends pas la réponse de frama c
+## Pour moi le code est très proche de la solution mais je ne comprends pas la réponse de frama c
 ```c
 /*@
 requires ( 1<=month <= 12 );
@@ -71,3 +82,23 @@ int day_of(int month){
 }
 
 ```
+
+
+# Exercice 5 Triangle
+
+#### commenter
+```c
+#include <limits.h>
+/*@
+  requires (0<= first <=180) && (0<= second <=180);
+  ensures (\result + first + second) == 180;
+*/
+
+int last_angle(int first, int second){
+    return 180 - first - second ;
+}
+
+```
+
+
+## Conclusion
